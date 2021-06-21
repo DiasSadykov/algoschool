@@ -12,6 +12,9 @@ databases:
   version: "6"
 routers:
 - name: "main-algoschool-backend"
+  custom_domains:
+  - branch: master
+    domain: api.algoschool.app
   routes:
   - application_name: "algoschool-backend"
     paths:
