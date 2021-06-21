@@ -13,7 +13,7 @@ databases:
 routers:
 - name: "main-algoschool-backend"
   custom_domains:
-  - branch: master
+  - branch: main
     domain: api.algoschool.app
   routes:
   - application_name: "algoschool-backend"
