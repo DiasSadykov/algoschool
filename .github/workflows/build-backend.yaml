@@ -32,4 +32,4 @@ jobs:
           context: algoschool-backend
           file: ./algoschool-backend/Dockerfile
           push: true
-          tags: backend:latest
+          tags: cr.yandex/crpv06svv8mf1emv94vs/backend:latest
