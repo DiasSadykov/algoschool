@@ -26,6 +26,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./algoschool-backend
+          context: algoschool-backend
           push: true
           tags: crpv06svv8mf1emv94vs/backend:latest
