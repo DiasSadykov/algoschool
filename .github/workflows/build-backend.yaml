@@ -26,6 +26,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
+          context: "{{defaultContext}}:algoschool-backend"
           file: ./algoschool-backend/Dockerfile
           push: true
           tags: crpv06svv8mf1emv94vs/backend:latest
