@@ -1,8 +1,8 @@
-name: build-and-push-frontend
+name: build-and-push-backend
 on:
   push:
     paths:
-    - 'algoschool-frontend/**'
+    - 'algoschool-backend/**'
     branches:
     - 'main'
 jobs:
@@ -26,6 +26,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./algoschool-frontend
+          context: ./algoschool-backend
           push: true
-          tags: crpv06svv8mf1emv94vs/frontend:latest
+          tags: crpv06svv8mf1emv94vs/backend:latest
