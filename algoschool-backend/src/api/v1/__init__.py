@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from . import feed
+from . import course
 
 router = APIRouter(prefix="/v1")
 
-router.include_router(feed.router)
+router.include_router(course.router)

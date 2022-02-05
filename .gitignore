@@ -1,3 +1,14 @@
+#VSCODE
+.vscode
+
+#ENV
+.env
+
+#PYTHON
 .venv
 __pycache__
-algo*
+algo-*
+
+
+#TERRAFORMß
+**/.terraform/*
