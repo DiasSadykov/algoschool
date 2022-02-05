@@ -28,4 +28,4 @@ jobs:
         with:
           context: ./algoschool-frontend
           push: true
-          tags: frontend:latest
+          tags: crpv06svv8mf1emv94vs/frontend:latest
