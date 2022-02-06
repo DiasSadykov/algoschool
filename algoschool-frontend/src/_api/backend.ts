@@ -26,5 +26,5 @@ export function getUserData(userId: number): Promise<AxiosResponse<any>> {
 }
 
 export function getCourse(): Promise<AxiosResponse<any>> {
-  return api.get(`/v1/course`)
+  return api.get(`/api/v1/course`)
 }

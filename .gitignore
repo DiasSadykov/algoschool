@@ -9,6 +9,11 @@
 __pycache__
 algo-*
 
+#FRONTEND
+node_modules
 
-#TERRAFORMß
+#TERRAFORM
 **/.terraform/*
+
+#DOCKER
+docker-compose.yml
