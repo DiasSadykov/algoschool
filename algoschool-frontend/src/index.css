@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+@layer utilities {
+  .mm-bullet {
+    position: relative;
+  }
+  .mm-bullet:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e0;
+    background-color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    z-index: 2;
+}
+.mm-bullet:before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  border-left: 2px dotted #cbd5e0;
+  height: 100%;
+  width: 1px;
+  z-index: 1;
+}
+.mm-bullet:first-child:before {
+  top: 13px;
+}
+.mm-bullet:last-child:before {
+  height: 6px;
+}
+  .mm-bullet-done:after {
+    border: 2px solid #48bb78!important;
+    background-color: #48bb78;
+}
+.bullet{
+  position: relative;
+}
+.bullet:after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid #cbd5e0;
+  background-color: #fff;
+  border-radius: 100%;
+  position: absolute;
+  left: 7px;
+  top: 13px;
+  z-index: 2;
+}
+.bullet:before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  border-left: 2px solid #cbd5e0;
+  height: 100%;
+  width: 1px;
+  z-index: 1;
+}
+.bullet:first-child:before {
+  top: 13px;
+}
+.bullet:last-child:before {
+  height: 6px;
+}
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+pre{
+  display: flex;
+  flex-direction: column;
+  background: #f7f9fa;
+  overflow: auto;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.dark pre{
+  @apply bg-gray-900
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

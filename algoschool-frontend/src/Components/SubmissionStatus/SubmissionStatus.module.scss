@@ -1,0 +1,66 @@
+.wrapper{
+    position: absolute;
+    padding-top: 20px;
+    width: 50%;
+    height: 30%;
+}
+
+.controls{
+    display: flex;
+    flex-direction: column;
+}
+
+.acceptedTitle{
+    font-size: 16px;
+    color: #79d81b;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.errorTitle{
+    font-size: 16px;
+    color: #d81b60;
+    font-weight: 500;
+    margin-right: 20px;
+}
+.resultLabel{
+    width: 80px;
+}
+.resultInfo{
+    padding: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+.resultErrorMessage{
+    border: 1px solid rgb(238, 238, 238);
+    background: rgb(240, 147, 147);
+    font-weight: 300;
+    font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace;
+    overflow-x: scroll;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.resultInfoValue{
+    padding: 6px 10px;
+    border: 1px solid rgb(238, 238, 238);
+    font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-left: 5px;
+    background: rgb(250, 250, 250);
+    display: flex;
+    flex: 1 1 0%;
+    overflow-x: auto;
+}
+
+@media (max-width: 945px) {
+    .wrapper{
+        position: relative;
+        height: auto;
+        width: 80%;
+    }
+}

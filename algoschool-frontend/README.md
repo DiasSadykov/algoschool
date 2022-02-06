@@ -1,0 +1,1 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e7fbd7b1-7516-44b7-b537-4013614da120/deploy-status)](https://app.netlify.com/sites/algoschool/deploys)

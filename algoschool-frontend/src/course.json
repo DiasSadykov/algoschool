@@ -1,0 +1,49 @@
+{
+  "courseBlocks": [
+    {
+      "blockTitle": "Simple Problems",
+      "blockItems": [
+        {
+          "itemType": "article",
+          "itemTitle": "How to tackle simple problems",
+          "itemId": "how-to-tackle-simple-problems",
+          "readingTime": "10 min",
+          "html": "<h2> Hello World! </h2> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+        },
+        {
+          "itemType": "problem",
+          "itemTitle": "A plus B",
+          "itemId": "a_plus_b",
+          "description": "sdf",
+          "codeSnippet": "sdf"
+        },
+        {
+          "itemType": "problem",
+          "itemTitle": "Two Sum",
+          "itemId": "two_sum",
+          "description": "sdf",
+          "codeSnippet": "sdf"
+        }
+      ]
+    },
+    {
+      "blockTitle": "Linked List",
+      "blockItems": [
+        {
+          "itemType": "problem",
+          "itemTitle": "A plus B",
+          "itemId": "a_plus_b",
+          "description": "sdf",
+          "codeSnippet": "sdf"
+        },
+        {
+          "itemType": "problem",
+          "itemTitle": "Two Sum",
+          "itemId": "two_sum",
+          "description": "sdf",
+          "codeSnippet": "sdf"
+        }
+      ]
+    }
+  ]
+}
