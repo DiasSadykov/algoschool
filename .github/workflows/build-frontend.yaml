@@ -32,4 +32,4 @@ jobs:
           context: algoschool-frontend
           file: ./algoschool-frontend/Dockerfile
           push: true
-          tags: cr.yandex/crpv06svv8mf1emv94vs/frontend:latest
+          tags: cr.yandex/crpv06svv8mf1emv94vs/frontend:${GITHUB_SHA::8}
