@@ -3,5 +3,5 @@ export const setDarkModeToLocalStorage = (darkMode: boolean) => {
 }
 
 export const getDarkModeFromLocalStorage = () => {
-    return localStorage.getItem('darkMode') === "true";
+    return localStorage.getItem('darkMode') ? localStorage.getItem('darkMode') === "true" : true;
 }

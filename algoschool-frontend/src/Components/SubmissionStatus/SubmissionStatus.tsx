@@ -11,26 +11,26 @@ function SubmissionStatus() {
     const submissionStatus = useSelector(getCurrentSubmissionStatus(id))
     const isFetching = useSelector(getIsSubmissionFetching)
     return (
-        <div className={styles.wrapper}>
+        <div className="mt-4">
         {isFetching? <Skeleton active />:
-        <div className={styles.controls}>
-            <p className={submissionStatus?.status==="Accepted" ? styles.acceptedTitle : styles.errorTitle}>{submissionStatus?.status}</p>
+        <div className="mt-2">
+            <p className={submissionStatus?.status==="Accepted" ? "text-md font-semibold text-green-600" : "text-md font-semibold text-red-600"}>{submissionStatus?.status}</p>
             {submissionStatus?.message ?
-                 <div className={styles.resultErrorMessage}>{submissionStatus?.message}</div> 
+                 <div className="text-xs bg-red-300 p-2 mt-2">{submissionStatus?.message}</div> 
              : null }
-            {submissionStatus?.input ? <div className={styles.resultInfo}>
-                <div className={styles.resultLabel}>Test Input</div>
-                <div className={styles.resultInfoValue}>{submissionStatus?.input}</div>
+            {submissionStatus?.input ? <div className="flex flex-row my-3">
+                <div className="dark:text-gray-50 text-xs p-2 font-medium text-gray-800 mr-3 align-bottom w-1/6">Test Input:</div>
+                <div className="dark:bg-gray-800 p-2 bg-gray-50 border-black border-solid border-opacity-70 w-1/2 font-mono text-xs">{submissionStatus?.input}</div>
             </div> : null}
             {submissionStatus?.expected ?
-            <div className={styles.resultInfo}>
-                <div className={styles.resultLabel}>Expected</div> 
-                <div className={styles.resultInfoValue}>{submissionStatus?.expected}</div>
+            <div className="flex flex-row my-3">
+                <div className="dark:text-gray-50 text-xs p-2 font-medium text-gray-800 mr-3 align-bottom w-1/6">Expected:</div> 
+                <div className="dark:bg-gray-800 p-2 bg-gray-50 border-black border-solid border-opacity-70 w-1/2 font-mono text-xs">{submissionStatus?.expected}</div>
             </div> : null }
             {submissionStatus?.result ?
-            <div className={styles.resultInfo}>
-                <div className={styles.resultLabel}>Result</div>
-                <div className={styles.resultInfoValue}>{submissionStatus?.result}</div>
+            <div className="flex flex-row my-3">
+                <div className="dark:text-gray-50 text-xs p-2 font-medium text-gray-800 mr-3 align-bottom w-1/6">Result:</div>
+                <div className="dark:bg-gray-800 p-2 bg-gray-50 border-black border-solid border-opacity-70 w-1/2 font-mono text-xs">{submissionStatus?.result}</div>
             </div> : null }
         </div> }
         </div>
