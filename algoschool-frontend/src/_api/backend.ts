@@ -28,3 +28,10 @@ export function getUserData(userId: number): Promise<AxiosResponse<any>> {
 export function getCourse(): Promise<AxiosResponse<any>> {
   return api.get(`/api/v1/course`)
 }
+
+export function submitSolution(code: string, problemId: string): Promise<AxiosResponse<any>> {
+  return api.post('/api/v1/submission', {
+    code: code,
+    problem_id: problemId
+  })
+}

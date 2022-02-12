@@ -12,5 +12,5 @@ COURSE_JSON = json.loads(urllib.request.urlopen(COURSE_URL).read().decode('utf-8
 
 
 @router.get("/course")
-async def course(user=Depends(auth)):
+async def handler(user=Depends(auth)):
     return COURSE_JSON

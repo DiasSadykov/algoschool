@@ -1,9 +1,8 @@
 import { courseBlock } from "../Reducers/course";
-import axios from 'axios'
 import { setFetchingSubmission, setSubmissionStatus } from './submission';
 import { SubmissionStatus } from "../Reducers/submission";
 import { setProblemAccepted } from "../_api/firebase";
-import { getCourse } from "../_api/backend"
+import { getCourse, submitSolution } from "../_api/backend"
 export const SET_PROBLEMS = "SET_PROBLEMS";
 export const SET_CODE_FOR_PROBLEM = "SET_CODE_FOR_PROBLEM";
 
@@ -36,15 +35,12 @@ export async function fetchCourse(dispatch, getState) {
 export const submitCode = id => async (dispatch, getState) => {
       dispatch(setFetchingSubmission(true))
       const state = getState()
-      const currentProblem = state.problems.problemsByIds[id]
+      const currentProblem = state.course.problemsByIds[id]
       const codeForCurrentProblem = currentProblem.codeSnippet
-      await axios.post('https://3b613vdnu5.execute-api.eu-central-1.amazonaws.com/dev/online-judge', {
-          code: codeForCurrentProblem,
-          problem_id: currentProblem.id
-        })
+      await submitSolution(codeForCurrentProblem, currentProblem.itemId)
         .then(function (response) {
           const result: SubmissionStatus = response.data
-          dispatch(setSubmissionStatus(currentProblem.id, {
+          dispatch(setSubmissionStatus(currentProblem.itemId, {
             status: result.status,
             message: result.message,
             expected: result.expected,
