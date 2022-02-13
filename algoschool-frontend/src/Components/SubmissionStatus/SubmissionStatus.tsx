@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { getCurrentSubmissionStatus, getIsSubmissionFetching } from '../../Selectors/submission';
-import styles from './SubmissionStatus.module.scss'
 import { Skeleton } from 'antd';
 
 

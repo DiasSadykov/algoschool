@@ -22,7 +22,7 @@ function Course() {
                         <div className="text-4xl md:text-6xl font-extrabold">
                             <Logo />
                         </div>
-                        <p className="text-gray-400 text-xl md:text-2xl mt-2 mb-14 text-center">Everything you need for coding interviews, in one platform<Emoji symbol="🧑‍💻" /></p>
+                        <p className="text-gray-400 text-xl md:text-2xl mt-2 mb-14 text-center">Everything you need for coding interviews in one platform<Emoji symbol="🧑‍💻" /></p>
                     </div>
                     {course.map(courseBlock => <CourseBlock key={courseBlock.blockTitle} sectionTitle={courseBlock.blockTitle} blockItems={courseBlock.blockItems} />)}
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
