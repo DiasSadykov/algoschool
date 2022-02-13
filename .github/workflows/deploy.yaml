@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
+      runs-on: ubuntu-latest
+      steps:
       - name: "Run deploy on a server"
         uses: appleboy/ssh-action@master
         with:
