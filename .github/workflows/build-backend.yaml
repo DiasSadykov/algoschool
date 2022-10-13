@@ -29,7 +29,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: diassadykov/algoschool
+          images: diassadykov/algoschool-backend
           tags: |
             type=raw,latest
             type=sha
