@@ -3,3 +3,4 @@ pydantic
 uvicorn
 firebase_admin
 httpx
+motor

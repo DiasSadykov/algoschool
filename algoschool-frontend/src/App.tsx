@@ -13,6 +13,11 @@ import firebase from './firebase';
 import { login, logout, setDarkMode } from './Actions/user';
 import { fetchCourse } from './Actions/course';
 import { getDarkMode } from './Selectors/user';
+import AdminAddCourseBlockForm from './Components/AdminAddCourseBlockForm/AdminAddCourseBlockForm';
+import AdminAddArticleForm from './Components/AdminAddArticleForm/AdminAddArticleForm';
+import AdminAddProblemForm from './Components/AdminAddProblemForm/AdminAddProblemForm';
+import AdminChangeProblemForm from './Components/AdminChangeProblemForm/AdminChangeProblemForm';
+import AdminChangeArticleForm from './Components/AdminChangeArticleForm/AdminChangeArticleForm';
 
 
 function App() {
@@ -25,7 +30,6 @@ function App() {
         if (user){
             dispatch(login(user))
             user.getIdToken().then(function(idToken) {  // <------ Check this line
-              console.log(idToken); // It shows the Firebase token now
               return idToken;
           })
         } else {
@@ -39,6 +43,21 @@ function App() {
       <Switch>
         <Route path="/about">
           <About/>
+        </Route>
+        <Route path="/admin/add-course-block">
+          <AdminAddCourseBlockForm/>
+        </Route>
+        <Route path="/admin/add-article">
+          <AdminAddArticleForm/>
+        </Route>
+        <Route path="/admin/add-problem">
+          <AdminAddProblemForm/>
+        </Route>
+        <Route path="/admin/change-article/:id">
+          <AdminChangeArticleForm/>
+        </Route>
+        <Route path="/admin/change-problem/:id">
+          <AdminChangeProblemForm/>
         </Route>
         <Route path="/problem/:id">
           <Problem/>

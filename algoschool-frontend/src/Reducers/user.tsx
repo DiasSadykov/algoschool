@@ -2,7 +2,8 @@ import { LOGIN, LOGOUT, SET_USER_DATA, UNSET_USER_DATA, SET_DARK_MODE } from "..
 import firebase from "firebase/app"
 import { getDarkModeFromLocalStorage } from "../_api/localStorage";
 
-export interface UserData{
+export interface UserInfo{
+    isAdmin: boolean
     completedProblems: Set<string>
 }
 
@@ -19,6 +20,7 @@ export interface Code {
 
 export interface User {
     isLoggedIn: boolean
+    isAdmin?: boolean
     user?: firebase.User
     completedProblems: Set<string>
     darkMode: boolean
@@ -50,6 +52,7 @@ export default function (state = initialState, action) {
         case SET_USER_DATA: {
             return {
                 ...state,
+                isAdmin: action.payload.isAdmin,
                 completedProblems: action.payload.completedProblems,
             };
         }

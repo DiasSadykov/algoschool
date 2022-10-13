@@ -2,14 +2,15 @@ import { SET_PROBLEMS } from "../Actions/course";
 import { SET_CODE_FOR_PROBLEM } from "../Actions/course"
 
 export type BlockItemBase = {
+    _id: string,
     itemType: string,
     itemTitle: string,
-    itemId: string,
+    itemSlug: string,
 }
 
 export type Article = BlockItemBase & {
     readingTime?: string,
-    html?: string
+    content?: string
 }
 
 export type Problem = BlockItemBase & {
@@ -20,6 +21,7 @@ export type Problem = BlockItemBase & {
 export type BlockItem = Article & Problem
 
 export type courseBlock = {
+    _id: string,
     blockTitle: string,
     blockItems: BlockItem[]
 }
@@ -46,13 +48,13 @@ export default function (state = initialState, action) {
             let problemsByIds: ProblemsByIds = {}
             action.payload.problems.forEach(problemSet => {
                 problemSet.blockItems.forEach(problem => {
-                    problemsByIds[problem.itemId] = problem
+                    problemsByIds[problem.itemSlug] = problem
                 });
             });
             return {
                 ...state,
                 fetching: false,
-                courseBlocks: action.payload.problems,
+                courseBlocks: action.payload.problems as courseBlock[],
                 problemsByIds: problemsByIds
             }
         }

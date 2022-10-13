@@ -17,3 +17,4 @@ node_modules
 
 #DOCKER
 docker-compose.yml
+docker-compose.prod.yml

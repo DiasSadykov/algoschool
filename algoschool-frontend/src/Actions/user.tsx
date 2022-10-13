@@ -1,4 +1,4 @@
-import { UserData } from "../Reducers/user";
+import user, { UserInfo } from "../Reducers/user";
 import { getUserData, setToken } from "../_api/backend";
 import { setDarkModeToLocalStorage } from "../_api/localStorage";
 
@@ -19,7 +19,7 @@ export const login = user => async (dispatch, getState) => {
     dispatch(_login(user))
     let token = await user.getIdToken()
     setToken(token)
-    dispatch(fetchUserData(user.uid))
+    dispatch(fetchUserData())
 }
 
 export const _logout = () => ({
@@ -50,10 +50,11 @@ export const setDarkMode = darkMode => (dispatch, getState) => {
     setDarkModeToLocalStorage(darkMode)
 }
 
-export const setUserData = (userData: UserData) => ({
+export const setUserData = (userInfo: UserInfo) => ({
     type: SET_USER_DATA,
     payload: {
-        completedProblems: userData.completedProblems
+        isAdmin: userInfo.isAdmin,
+        completedProblems: userInfo.completedProblems
     }
 })
 
@@ -61,9 +62,13 @@ export const unsetUserData = () => ({
     type: UNSET_USER_DATA,
 })
 
-export const fetchUserData = userId => async (dispatch, getState) => {
-    getUserData(userId).then(userDataRaw => {
-        console.log(userDataRaw)
-        // dispatch(setUserData(userData))
+export const fetchUserData = () => async (dispatch, getState) => {
+    getUserData().then(userDataRaw => {
+        const userData = userDataRaw.data
+        console.log(userData)
+        dispatch(setUserData({
+            isAdmin: userData.is_admin,
+            completedProblems: userData.completed_problems
+        }))
     })
 }

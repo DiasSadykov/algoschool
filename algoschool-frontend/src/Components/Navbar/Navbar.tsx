@@ -14,7 +14,7 @@ function Navbar() {
     const [isLoggedIn, ] = useSelector(getLoggedInAndUser)
     return (
         <div className="dark:bg-gray-800 border-b dark:border-gray-700 flex text-gray-600 text-sm flex-row justify-start items-center shadow-sm fixed top-0 inset-x-0 z-20 bg-white h-16 ">
-            <div className="ml-3 text-base font-semibold"><Logo/></div>
+            <div className="ml-3 text-base font-bold"><Logo/></div>
             <nav className="invisible lg:visible ml-10 h-2/3 w-1/2">
                 <input placeholder={`🔎 Search`} className="border-gray-50 pl-2 focus:border-gray-200 border-b-2 h-full w-full text-xl text-gray-500  rounded-lg focus:outline-none"></input>
             </nav>

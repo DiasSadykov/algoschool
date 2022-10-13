@@ -7,12 +7,39 @@ import { useSelector } from 'react-redux'
 import { getCurrentItem, isFetchingCourse } from '../../Selectors/course'
 import Loading from '../Loading/Loading'
 import { Article } from '../../Reducers/course'
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header'; 
+import List from '@editorjs/list'; 
+import Quote from '@editorjs/quote'; 
+import Embed from '@editorjs/embed'; 
+import Link from '@editorjs/link'; 
+import SimpleImage from '@editorjs/simple-image'; 
+import Checklist from '@editorjs/checklist'; 
+import Code from '@editorjs/code'
 
 function Problem() {
     const { id } = useParams()
     const article = useSelector(getCurrentItem(id)) as Article
     const isFetching = useSelector(isFetchingCourse)
-
+    const editor = React.useMemo(()=>{
+        return new EditorJS({
+            holder: 'editorjs',
+            tools: {
+                header: Header,
+                list: List,
+                quote: Quote,
+                embed: Embed,
+                link: Link,
+                simpleImage: SimpleImage,
+                checklist: Checklist,
+                code: Code
+            },
+            inlineToolbar: true,
+            hideToolbar: true,
+            readOnly: true,
+            data: article?.content ? JSON.parse(article.content) : {}
+          });
+    }, [article]); 
     return (
         <>
             { isFetching ? <Loading /> :
@@ -26,7 +53,7 @@ function Problem() {
                                     <div className="font-extrabold text-5xl mb-2">{article.itemTitle}</div>
                                     <div className="font-light text-gray-400 text-xs">Reading time: {article.readingTime}</div>
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: article.html as string }} className="text-lg  w-2/3"></div>
+                                <div className="w-2/3 my-2 py-2" id="editorjs"></div>
                             </div>
                         </>
                         : <Result
