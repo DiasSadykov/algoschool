@@ -11,6 +11,7 @@ algo-*
 
 #FRONTEND
 node_modules
+build
 
 #TERRAFORM
 **/.terraform/*
@@ -18,3 +19,6 @@ node_modules
 #DOCKER
 docker-compose.yml
 docker-compose.prod.yml
+
+#MONGO
+data

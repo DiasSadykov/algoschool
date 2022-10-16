@@ -86,6 +86,8 @@ idna==3.3
     #   anyio
     #   requests
     #   rfc3986
+motor==3.0.0
+    # via -r requirements.in
 msgpack==1.0.3
     # via cachecontrol
 packaging==21.3
@@ -109,8 +111,8 @@ pydantic==1.9.0
     # via
     #   -r requirements.in
     #   fastapi
-pymongo==4.0.1
-    # via -r requirements.in
+pymongo==4.2.0
+    # via motor
 pyparsing==3.0.6
     # via
     #   httplib2
@@ -129,6 +131,8 @@ six==1.16.0
     #   google-auth
     #   google-auth-httplib2
     #   grpcio
+slugify==0.0.1
+    # via -r requirements.in
 sniffio==1.2.0
     # via
     #   anyio
