@@ -20,7 +20,9 @@ class UserInfo(BaseModel):
 
 async def auth(authorization: Optional[str] = Header(None)) -> Optional[UserInfo]:
     if authorization:
+        print(authorization)
         user: dict = firebase_auth.verify_id_token(authorization)
         uid: str = user.get("uid")
+        print(uid)
         return UserInfo(uid = uid, is_admin = uid in ADMIN_USERS)
     return None

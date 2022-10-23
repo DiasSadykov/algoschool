@@ -48,6 +48,7 @@ function AdminAddArticleForm() {
                 <form className="px-8 pb-8 mb-20 w-1/2 m-auto">
                     <div className="mb-4">
                     <input defaultValue={problem?.itemTitle} id="itemTitle" type="text" name="itemTitle" placeholder="Title" onChange={handleInputChange} className="my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                        <input checked={problem?.isVisible} id="isVisible" type="checkbox" name="isVisible" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className=""/>
                         <textarea defaultValue={problem?.codeSnippet} id="codeSnippet" name="codeSnippet" placeholder="Code Snippet" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                         <textarea defaultValue={problem?.description} id="description" name="description" placeholder="Description" onChange={handleInputChange} className="h-72 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                     </div>

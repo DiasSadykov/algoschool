@@ -1,6 +1,7 @@
 import user, { UserInfo } from "../Reducers/user";
 import { getUserData, setToken } from "../_api/backend";
 import { setDarkModeToLocalStorage } from "../_api/localStorage";
+import { fetchCourse } from "./course";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -20,6 +21,7 @@ export const login = user => async (dispatch, getState) => {
     let token = await user.getIdToken()
     setToken(token)
     dispatch(fetchUserData())
+    dispatch(fetchCourse)
 }
 
 export const _logout = () => ({

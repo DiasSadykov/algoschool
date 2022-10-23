@@ -25,7 +25,6 @@ function App() {
   const darkMode = useSelector(getDarkMode)
   dispatch(setDarkMode(darkMode))
   useEffect(() => {
-    dispatch(fetchCourse)
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
         if (user){
             dispatch(login(user))
@@ -36,6 +35,7 @@ function App() {
             dispatch(logout())
         }
     });
+    dispatch(fetchCourse)
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, [dispatch]);
   return (

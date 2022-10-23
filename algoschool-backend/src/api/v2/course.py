@@ -12,6 +12,7 @@ class Article(MongoBase):
     item_slug: str | None
     reading_time: str | None
     content: str | None
+    is_visible: bool | None
 
 
 class Problem(MongoBase):
@@ -20,6 +21,7 @@ class Problem(MongoBase):
     item_slug: str | None
     description: str | None
     code_snippet: str | None
+    is_visible: bool | None
 
 
 class CourseBlock(MongoBase):
@@ -41,5 +43,5 @@ async def handler(user=Depends(auth), db=Depends(db)):
             course_block_items.append(
                 await db.courseblockitems.find_one({"_id": block_item_id})
             )
-        course.course_blocks[index].block_items = course_block_items
+        course.course_blocks[index].block_items = [item for item in course_block_items if item.get("isVisible", False) or (user and user.is_admin)]
     return course

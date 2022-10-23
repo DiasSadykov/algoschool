@@ -14,7 +14,7 @@ class Article(MongoBase):
     item_slug: str | None
     reading_time: str | None
     content: str | None
-
+    is_visible: bool | None
 
 class ChangeArticleRequest(BaseApiModel):
     course_block_item_id: str
@@ -31,6 +31,7 @@ async def handler(request: ChangeArticleRequest, user=Depends(auth), db=Depends(
         "itemTitle": article.item_title,
         "itemSlug": article.item_slug,
         "readingTime": article.reading_time,
-        "content": article.content
+        "content": article.content,
+        "isVisible": article.is_visible
     }}, upsert=False)
     return {"_id": article.id}

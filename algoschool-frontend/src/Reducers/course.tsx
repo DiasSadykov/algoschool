@@ -6,6 +6,7 @@ export type BlockItemBase = {
     itemType: string,
     itemTitle: string,
     itemSlug: string,
+    isVisible: boolean
 }
 
 export type Article = BlockItemBase & {

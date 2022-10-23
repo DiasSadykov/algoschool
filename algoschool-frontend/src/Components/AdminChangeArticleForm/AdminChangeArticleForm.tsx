@@ -79,6 +79,7 @@ function AdminAddArticleForm() {
                     <div className="mb-4">
                         <input defaultValue={article?.itemTitle} id="itemTitle" type="text" name="itemTitle" placeholder="Title" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 font-bold text-gray-50 text-5xl leading-tight focus:outline-none"/>
                         <input defaultValue={article?.readingTime} id="readingTime" type="text" name="readingTime" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 text-gray-50 text-sm leading-tight focus:outline-none"/>
+                        <input checked={article?.isVisible} id="isVisible" type="checkbox" name="isVisible" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className=""/>
                         {/* <textarea id="content" name="content" placeholder="Content" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/> */}
                         <div className="my-2 py-2 px-16 bg-gray-100 rounded" id="editorjs"></div>
                     </div>

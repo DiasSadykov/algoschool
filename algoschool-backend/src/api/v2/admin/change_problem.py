@@ -14,6 +14,7 @@ class Problem(MongoBase):
     item_slug: str | None
     description: str | None
     code_snippet: str | None
+    is_visible: bool | None
 
 class ChangeProblemRequest(BaseApiModel):
     course_block_item_id: str
@@ -30,6 +31,7 @@ async def handler(request: ChangeProblemRequest, user=Depends(auth), db=Depends(
         "itemTitle": problem.item_title,
         "itemSlug": problem.item_slug,
         "description": problem.description,
-        "codeSnippet": problem.code_snippet
+        "codeSnippet": problem.code_snippet,
+        "isVisible": problem.is_visible
     }}, upsert=False)
     return {"_id": problem.id}

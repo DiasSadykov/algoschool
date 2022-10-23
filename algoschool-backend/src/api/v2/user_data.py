@@ -14,4 +14,4 @@ class UserInfo(BaseModel):
 async def handler(user=Depends(auth)):
     if not user:
         return None
-    return UserInfo(is_admin=user.is_admin)
+    return user
