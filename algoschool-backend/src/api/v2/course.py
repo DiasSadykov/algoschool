@@ -36,12 +36,12 @@ class Course(MongoBase):
 
 @router.get("/course", response_model=Course)
 async def handler(user=Depends(auth), db=Depends(db)):
-    course = Course.parse_obj(await db.courses.find_one({"courseTitle": "Algorithms"}))
+    course = Course.parse_obj(await db.courses.find_one({"course_title": "Algorithms"}))
     for index, course_block in enumerate(course.course_blocks):
         course_block_items = []
         for block_item_id in course_block.block_items:
             course_block_items.append(
-                await db.courseblockitems.find_one({"_id": block_item_id})
+                await db.courseblock_items.find_one({"_id": block_item_id})
             )
-        course.course_blocks[index].block_items = [item for item in course_block_items if item.get("isVisible", False) or (user and user.is_admin)]
+        course.course_blocks[index].block_items = [item for item in course_block_items if item.get("is_visible", False) or (user and user.is_admin)]
     return course

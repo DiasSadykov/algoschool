@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
@@ -21,10 +21,19 @@ function AdminAddArticleForm() {
     const { id } = useParams()
     const article = useSelector(getCurrentItem(id)) as Article
     const [form, setForm] = useState({
-        itemTitle: article?.itemTitle,
-        readingTime: article?.readingTime,
-        content: article?.content
+        item_title: article?.itemTitle,
+        reading_time: article?.readingTime,
+        content: article?.content,
+        is_visible: article?.isVisible
     });
+    useEffect(() => {
+        setForm({
+            item_title: article?.itemTitle,
+            reading_time: article?.readingTime,
+            content: article?.content,
+            is_visible: article?.isVisible
+        })
+    }, [article]);
     const history = useHistory()
     const dispatch = useDispatch()
     const editor = React.useMemo(()=>{
@@ -59,7 +68,7 @@ function AdminAddArticleForm() {
 
     async function handleFormSubmit(){
         const request = {
-            courseBlockItemId: article._id,
+            course_block_item_id: article.id,
             article: {
                 ...form,
                 content: JSON.stringify(await editor.save())
@@ -77,9 +86,9 @@ function AdminAddArticleForm() {
             <div className="pt-20 mb-20">
                 <form className="px-8 pb-8 mb-20 w-1/2 m-auto">
                     <div className="mb-4">
-                        <input defaultValue={article?.itemTitle} id="itemTitle" type="text" name="itemTitle" placeholder="Title" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 font-bold text-gray-50 text-5xl leading-tight focus:outline-none"/>
-                        <input defaultValue={article?.readingTime} id="readingTime" type="text" name="readingTime" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 text-gray-50 text-sm leading-tight focus:outline-none"/>
-                        <input checked={article?.isVisible} id="isVisible" type="checkbox" name="isVisible" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className=""/>
+                        <input defaultValue={article?.itemTitle} id="itemTitle" type="text" name="item_title" placeholder="Title" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 font-bold text-gray-50 text-5xl leading-tight focus:outline-none"/>
+                        <input defaultValue={article?.readingTime} id="readingTime" type="text" name="reading_time" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 text-gray-50 text-sm leading-tight focus:outline-none"/>
+                        <input checked={article?.isVisible} id="isVisible" type="checkbox" name="is_visible" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className=""/>
                         {/* <textarea id="content" name="content" placeholder="Content" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/> */}
                         <div className="my-2 py-2 px-16 bg-gray-100 rounded" id="editorjs"></div>
                     </div>

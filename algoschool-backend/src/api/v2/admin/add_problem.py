@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends
 from fastapi.encoders import jsonable_encoder
+from pydantic import BaseModel
 from slugify import slugify
 
 from src.deps.auth import auth
 from src.deps.db import db
-from src.models.models import BaseApiModel, MongoBase
+from src.models.models import MongoBase
 
 router = APIRouter()
 
@@ -16,7 +17,7 @@ class Problem(MongoBase):
     description: str | None
     code_snippet: str | None
 
-class AddProblemRequest(BaseApiModel):
+class AddProblemRequest(BaseModel):
     course_block_id: str
     problem: Problem
 
@@ -27,10 +28,10 @@ async def handler(request: AddProblemRequest, user=Depends(auth), db=Depends(db)
     course_block_id = request.course_block_id
     problem.item_type = "problem"
     problem.item_slug = slugify(problem.item_title)
-    doc = await db.courseblockitems.insert_one(jsonable_encoder(problem))
+    doc = await db.courseblock_items.insert_one(jsonable_encoder(problem))
     await db.courses.find_one_and_update(
-        {"courseTitle": "Algorithms"},
-        {"$push": {"courseBlocks.$[block].blockItems": str(problem.id)}},
+        {"course_title": "Algorithms"},
+        {"$push": {"course_blocks.$[block].block_items": str(problem.id)}},
         array_filters=[{"block._id": course_block_id}],
     )
     return {"_id": doc.inserted_id}

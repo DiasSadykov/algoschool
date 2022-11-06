@@ -13,7 +13,7 @@ class CourseBlockId(MongoBase):
 @router.post("/delete_course_block")
 async def handler(course_block_id: CourseBlockId, user=Depends(auth), db=Depends(db)):
     doc = await db.courses.update_one(
-        {"courseTitle": "Algorithms"},
-        {"$pull": {"courseBlocks": {"_id": course_block_id.id}}},
+        {"course_title": "Algorithms"},
+        {"$pull": {"course_blocks": {"_id": course_block_id.id}}},
     )
     return {"id": course_block_id.id}

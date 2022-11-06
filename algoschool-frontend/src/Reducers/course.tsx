@@ -2,7 +2,7 @@ import { SET_PROBLEMS } from "../Actions/course";
 import { SET_CODE_FOR_PROBLEM } from "../Actions/course"
 
 export type BlockItemBase = {
-    _id: string,
+    id: string,
     itemType: string,
     itemTitle: string,
     itemSlug: string,
@@ -22,7 +22,7 @@ export type Problem = BlockItemBase & {
 export type BlockItem = Article & Problem
 
 export type courseBlock = {
-    _id: string,
+    id: string,
     blockTitle: string,
     blockItems: BlockItem[]
 }

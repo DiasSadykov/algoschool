@@ -21,9 +21,9 @@ async def handler(
     course_block_id: CourseBlockId, course_block_item_id: CourseBlockItemId, user=Depends(auth), db=Depends(db)
 ):
     await db.courses.find_one_and_update(
-        {"courseTitle": "Algorithms"},
-        {"$pull": {"courseBlocks.$[block].blockItems": str(course_block_item_id.id)}},
+        {"course_title": "Algorithms"},
+        {"$pull": {"course_blocks.$[block].block_items": str(course_block_item_id.id)}},
         array_filters=[{"block._id": course_block_id.id}],
     )
-    doc = await db.courseblockitems.delete_one({"_id": course_block_item_id.id})
+    doc = await db.courseblock_items.delete_one({"_id": course_block_item_id.id})
     return {"_id": course_block_item_id.id}

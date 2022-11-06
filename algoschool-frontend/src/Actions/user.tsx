@@ -69,8 +69,8 @@ export const fetchUserData = () => async (dispatch, getState) => {
         const userData = userDataRaw.data
         console.log(userData)
         dispatch(setUserData({
-            isAdmin: userData.is_admin,
-            completedProblems: userData.completed_problems
+            isAdmin: userData.isAdmin,
+            completedProblems: userData.completedProblems
         }))
     })
 }

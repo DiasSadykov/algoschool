@@ -29,7 +29,7 @@ function AdminAddProblemForm() {
 
     function handleFormSubmit(){
         const request = {
-            courseBlockId: courseBlockId,
+            course_block_id: courseBlockId,
             problem: form
         }
         addProblem(request).then(()=>{
@@ -45,10 +45,10 @@ function AdminAddProblemForm() {
                 <form className="shadow-md bg-gray-50 dark:bg-gray-900 rounded pt-6 px-8 pb-8 mb-20 w-1/2 m-auto">
                     <div className="mb-4">
                         <label className="dark:text-gray-50 block text-gray-700 text-sm font-bold mb-2" htmlFor="courseBlock">
-                            Article
+                            Problem
                         </label>
-                        <input id="itemTitle" type="text" name="itemTitle" placeholder="Title" onChange={handleInputChange} className="my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-                        <textarea id="codeSnippet" name="codeSnippet" placeholder="Code Snippet" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                        <input id="itemTitle" type="text" name="item_title" placeholder="Title" onChange={handleInputChange} className="my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                        <textarea id="codeSnippet" name="code_snippet" placeholder="Code Snippet" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                         <textarea id="description" name="description" placeholder="Description" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                     </div>
                     <div className="flex items-center justify-between">

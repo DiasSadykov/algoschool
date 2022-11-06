@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import _ from 'lodash'
 import { API_URL } from '../const'
 
 const api = axios.create({
@@ -8,6 +9,32 @@ const api = axios.create({
   },
   responseType: 'json',
 })
+
+const camelCaseKeys = (obj) => {
+  if (!_.isObject(obj)) {
+    return obj;
+  } else if (_.isArray(obj)) {
+    return obj.map((v) => camelCaseKeys(v));
+  }
+  return _.reduce(obj, (r, v, k) => {
+    return { 
+      ...r, 
+      [_.camelCase(k)]: camelCaseKeys(v) 
+    };
+  }, {});
+};  
+
+api.interceptors.response.use(
+  function(response) {
+    return {
+      ...response,
+      data: camelCaseKeys(response.data),
+    }
+  },
+  function(error) {
+    return Promise.reject(error)
+  }
+)
 
 export const setToken = (token: string) => {
   api.defaults.headers.common['Authorization'] = `${token}`
@@ -22,8 +49,8 @@ export const post = <T = any, R = AxiosResponse<T>>(
 }
 
 export interface UserInfo{
-  is_admin: boolean
-  completed_problems: Set<string>
+  isAdmin: boolean
+  completedProblems: Set<string>
 }
 
 export function getUserData(): Promise<AxiosResponse<UserInfo>> {

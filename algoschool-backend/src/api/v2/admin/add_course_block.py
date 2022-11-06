@@ -16,7 +16,7 @@ class CourseBlock(MongoBase):
 @router.post("/add_course_block")
 async def handler(course_block: CourseBlock, user=Depends(auth), db=Depends(db)):
     doc = await db.courses.find_one_and_update(
-        {"courseTitle": "Algorithms"},
-        {"$push": {"courseBlocks": jsonable_encoder(course_block)}},
+        {"course_title": "Algorithms"},
+        {"$push": {"course_blocks": jsonable_encoder(course_block)}},
     )
     return {"_id": doc.get("_id")}

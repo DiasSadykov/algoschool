@@ -53,7 +53,7 @@ function AdminAddArticleForm() {
 
     async function handleFormSubmit(){
         const request = {
-            courseBlockId: courseBlockId,
+            course_block_id: courseBlockId,
             article: {
                 ...form,
                 content: JSON.stringify(await editor.save())
@@ -71,8 +71,8 @@ function AdminAddArticleForm() {
             <div className="pt-20 mb-20">
                 <form className="px-8 pb-8 mb-20 w-1/2 m-auto">
                     <div className="mb-4">
-                        <input id="itemTitle" type="text" name="itemTitle" placeholder="Title" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 font-bold text-gray-50 text-5xl leading-tight focus:outline-none"/>
-                        <input id="readingTime" type="text" name="readingTime" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 text-gray-50 text-sm leading-tight focus:outline-none"/>
+                        <input id="itemTitle" type="text" name="item_title" placeholder="Title" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 font-bold text-gray-50 text-5xl leading-tight focus:outline-none"/>
+                        <input id="readingTime" type="text" name="reading_time" placeholder="Reading Time (in minutes)" onChange={handleInputChange} className="focus:border-gray-50 w-full border-transparent border-b-2 bg-gray-800 my-2 appearance-none py-2 text-gray-50 text-sm leading-tight focus:outline-none"/>
                         {/* <textarea id="content" name="content" placeholder="Content" onChange={handleInputChange} className="h-32 my-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/> */}
                         <div className="my-2 py-2 px-16 bg-gray-100 rounded" id="editorjs"></div>
                     </div>

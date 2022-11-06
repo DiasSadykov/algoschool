@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends
+from pydantic import BaseModel
 from slugify import slugify
 
 from src.deps.auth import auth
 from src.deps.db import db
-from src.models.models import BaseApiModel, MongoBase
+from src.models.models import MongoBase
 
 router = APIRouter()
 
@@ -16,7 +17,7 @@ class Problem(MongoBase):
     code_snippet: str | None
     is_visible: bool | None
 
-class ChangeProblemRequest(BaseApiModel):
+class ChangeProblemRequest(BaseModel):
     course_block_item_id: str
     problem: Problem
 
@@ -27,11 +28,11 @@ async def handler(request: ChangeProblemRequest, user=Depends(auth), db=Depends(
     course_block_item_id = request.course_block_item_id
     problem.item_type = "problem"
     problem.item_slug = slugify(problem.item_title)
-    doc = db.courseblockitems.update_one({'_id': course_block_item_id}, {"$set": {
-        "itemTitle": problem.item_title,
-        "itemSlug": problem.item_slug,
+    doc = db.courseblock_items.update_one({'_id': course_block_item_id}, {"$set": {
+        "item_title": problem.item_title,
+        "item_slug": problem.item_slug,
         "description": problem.description,
-        "codeSnippet": problem.code_snippet,
-        "isVisible": problem.is_visible
+        "code_snippet": problem.code_snippet,
+        "is_visible": problem.is_visible
     }}, upsert=False)
     return {"_id": problem.id}

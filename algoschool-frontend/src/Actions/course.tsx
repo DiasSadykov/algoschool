@@ -24,6 +24,7 @@ export const setCodeForProblem = (id, code) => ({
 export async function fetchCourse(dispatch, getState) {
     getCourse()
       .then(function (response) {
+        console.log(response)
         dispatch(setProblems(response.data.courseBlocks))
       })
       .catch(function (error) {

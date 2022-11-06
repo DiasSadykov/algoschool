@@ -7,18 +7,18 @@ from src.models.models import MongoBase
 router = APIRouter()
 
 
-class CourseBlockItems(MongoBase):
+class Courseblock_items(MongoBase):
     item_ids: list[str]
     is_visible: bool | None
 
 
 @router.post("/change_course_block")
 async def handler(
-    course_block_items: CourseBlockItems, user=Depends(auth), db=Depends(db)
+    course_block_items: Courseblock_items, user=Depends(auth), db=Depends(db)
 ):
     doc = await db.courses.find_one_and_update(
-        {"courseTitle": "Algorithms"},
-        {"$set": {"courseBlocks.$[block].blockItems": course_block_items.item_ids, "courseBlocks.$[block].is_visible": course_block_items.is_visible}},
+        {"course_title": "Algorithms"},
+        {"$set": {"course_blocks.$[block].block_items": course_block_items.item_ids, "course_blocks.$[block].is_visible": course_block_items.is_visible}},
         array_filters=[{"block._id": course_block_items.id}],
     )
     return course_block_items.id

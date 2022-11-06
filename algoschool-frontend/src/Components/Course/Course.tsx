@@ -25,7 +25,7 @@ function Course() {
                         </div>
                         <p className="text-gray-400 text-xl md:text-2xl mt-2 mb-14 text-center">Everything you need for coding interviews in one platform<Emoji symbol="🧑‍💻" /></p>
                     </div>
-                    {course.map(courseBlock => <CourseBlock key={courseBlock.blockTitle} _id={courseBlock._id} sectionTitle={courseBlock.blockTitle} blockItems={courseBlock.blockItems} />)}
+                    {course.map(courseBlock => <CourseBlock key={courseBlock.blockTitle} id={courseBlock.id} sectionTitle={courseBlock.blockTitle} blockItems={courseBlock.blockItems} />)}
                     {
                         isAdmin ? <div className="flex flex-col justify-center pt-4">
                         <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto" to={`/admin/add-course-block`}>
